@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 cd "$(dirname $0)/.."
+echo "$(dirname $0)"
 
 set -e
 
 mkdir -p .dfl
 mkdir -p workspace
 
-echo "Running on Ubuntu"
+echo "Running on $(dirname $0)"
 
 if [ ! -d .dfl/DeepFaceLab ]; then
   echo "Cloning DeepFaceLab"
@@ -25,14 +26,14 @@ source .dfl/env/bin/activate
 python -m pip install --upgrade pip
 
 version=$(python -V | cut -f 2 -d ' ' | cut -f 1,2 -d .)
-reqs_file='requirements.txt'
+reqs_file='$(dirname $0)/requirements.txt'
 
 version_suffix=''
-if [[ ! -z "$version" && -f "requirements_$version.txt" ]]; then
+if [[ ! -z "$version" && -f "$(dirname $0)/requirements_$version.txt" ]]; then
   version_suffix="_$version"
 fi
 
-reqs_file="requirements${version_suffix}.txt"
+reqs_file="$(dirname $0)/requirements${version_suffix}.txt"
 
 echo "Using $reqs_file for $(python -V)"
 
