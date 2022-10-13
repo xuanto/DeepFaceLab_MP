@@ -9,6 +9,8 @@ mkdir -p .dfl
 mkdir -p workspace
 
 # init conda
+echo "$('$1/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+echo "('$1/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 __conda_setup="$('$1/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 echo "debug 1"
 if [ $? -eq 0 ]; then
