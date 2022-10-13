@@ -30,6 +30,9 @@ fi
 echo "creating dfl env ..."
 conda create -n dfl python=3.6
 
+echo "init dfl env ..."
+source activate dfl
+
 echo "upgrading pip ..."
 python -m pip install --upgrade pip
 
