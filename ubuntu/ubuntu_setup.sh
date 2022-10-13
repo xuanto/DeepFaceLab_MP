@@ -12,17 +12,22 @@ echo "Running on $(dirname $0)"
 if [ ! -d .dfl/DeepFaceLab ]; then
   echo "Cloning DeepFaceLab"
   git clone --no-single-branch --depth 1 "https://github.com/chychkan/DeepFaceLab.git" .dfl/DeepFaceLab
+  echo "DeepFaceLab clone success!!"
 else
   echo "DeepFaceLab existed, skip cloning ..."
 fi
 
 if [ ! -d .dfl/env ]; then
+  echo "creating virtualenv ..."
   virtualenv -p python3 .dfl/env
+  echo "virtualenv successfully create!!"
 fi
 
 chmod 777 .dfl/env/bin/activate
 source .dfl/env/bin/activate
+echo ".dfl/env/bin/activate activate success !!!"
 
+echo "upgrading pip ..."
 python -m pip install --upgrade pip
 
 version=$(python -V | cut -f 2 -d ' ' | cut -f 1,2 -d .)
