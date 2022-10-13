@@ -17,15 +17,18 @@ else
   echo "DeepFaceLab existed, skip cloning ..."
 fi
 
-if [ ! -d .dfl/env ]; then
-  echo "creating virtualenv ..."
-  virtualenv -p python3 .dfl/env
-  echo "virtualenv successfully create!!"
-fi
+# if [ ! -d .dfl/env ]; then
+#   echo "creating virtualenv ..."
+#   virtualenv -p python3 .dfl/env
+#   echo "virtualenv successfully create!!"
+# fi
 
-chmod 777 .dfl/env/bin/activate
-source .dfl/env/bin/activate
-echo ".dfl/env/bin/activate activate success !!!"
+# chmod 777 .dfl/env/bin/activate
+# source .dfl/env/bin/activate
+# echo ".dfl/env/bin/activate activate success !!!"
+
+echo "creating dfl env ..."
+conda create -n dfl python=3.6
 
 echo "upgrading pip ..."
 python -m pip install --upgrade pip
