@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 cd "$(dirname $0)/.."
 echo "$(dirname $0)"
-echo "/home/ubuntu/anaconda3"
+echo "~/anaconda3"
 
 set -e
 
@@ -9,18 +9,18 @@ mkdir -p .dfl
 mkdir -p workspace
 
 # init conda
-# echo "$('/home/ubuntu/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-# echo "('/home/ubuntu/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-__conda_setup="$('/home/ubuntu/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+# echo "$('~/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+# echo "('~/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('~/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 echo "debug 1"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/ubuntu/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/ubuntu/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "~/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "~/anaconda3/etc/profile.d/conda.sh"
     else
         echo "debug 2"
-        export PATH="/home/ubuntu/anaconda3/bin:$PATH"
+        export PATH="~/anaconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -37,11 +37,21 @@ else
   echo "DeepFaceLab existed, skip cloning ..."
 fi
 
-echo "creating dfl env (using python verison=3.9) ..."
-conda create -n dfl python=3.9
+if [ ! -d ~/anaconda3/envs/dfl ]; then
+  echo "creating dfl env (using python verison=3.9) ..."
+  conda create -n dfl python=3.9
+else
+  echo "dfl env exists"
+fi
+
 conda activate dfl
-conda env config vars set DFL_MAIN=".dfl/DeepFaceLab/main.py"
-conda env config vars set WORKSPACE="workspace"
+
+if [ -n "$DFL_MAIN" ]; then
+  conda env config vars set DFL_MAIN=".dfl/DeepFaceLab/main.py"
+fi
+if [ -n "$WORKSPACE" ]; then
+  conda env config vars set WORKSPACE="workspace"
+fi
 
 echo "upgrading pip ..."
 python -m pip install --upgrade pip
