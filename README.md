@@ -15,9 +15,9 @@ You'll need `git`, `ffmpeg` and `anaconda` available to execute these scripts. T
 
 ## ubuntu
 
-大部分ubuntu服务器默认使用dash，应避免脚本中出现source命令
+大部分ubuntu服务器默认使用dash，会导致脚本中的source命令无法使用。本项目采用conda进行环境管理，可以避免对source命令的依赖。
 
-`sudo sh ubuntu/ubuntu_setup.sh`
+安装命令：`sudo sh ubuntu/ubuntu_setup.sh [anaconda安装路径]`
 
 本项目在腾讯云服务器上进行部署，未测试其他平台服务器兼容情况。欢迎提CR~
 
