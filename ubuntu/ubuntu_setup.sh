@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 cd "$(dirname $0)/.."
 echo "$(dirname $0)"
+echo "$1"
 
 set -e
 
@@ -9,12 +10,14 @@ mkdir -p workspace
 
 # init conda
 __conda_setup="$('$1/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+echo "debug 1"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
     if [ -f "$1/etc/profile.d/conda.sh" ]; then
         . "$1/etc/profile.d/conda.sh"
     else
+        echo "debug 2"
         export PATH="$1/bin:$PATH"
     fi
 fi
