@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 cd "$(dirname $0)/.."
 echo "$(dirname $0)"
-echo "$1"
+echo "/home/ubuntu/anaconda3"
 
 set -e
 
@@ -9,18 +9,18 @@ mkdir -p .dfl
 mkdir -p workspace
 
 # init conda
-echo "$('$1/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-echo "('$1/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-__conda_setup="$('$1/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+# echo "$('/home/ubuntu/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+# echo "('/home/ubuntu/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/ubuntu/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 echo "debug 1"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "$1/etc/profile.d/conda.sh" ]; then
-        . "$1/etc/profile.d/conda.sh"
+    if [ -f "/home/ubuntu/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/ubuntu/anaconda3/etc/profile.d/conda.sh"
     else
         echo "debug 2"
-        export PATH="$1/bin:$PATH"
+        export PATH="/home/ubuntu/anaconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
