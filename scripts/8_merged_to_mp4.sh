@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 cd "$(dirname $0)/.."
-source scripts/env.sh
+
 
 # 解决mac无法确认开发者的问题
 sudo spctl --master-disable
