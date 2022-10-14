@@ -27,14 +27,17 @@ fi
 echo "CONDA_DEFAULT_ENV=$CONDA_DEFAULT_ENV"
 tmpv=`conda info --envs | grep dfl`
 echo "tmpv=$tmpv"
+
 if [ ! -n "$tmpv" ]; then
   echo "creating dfl env (using python verison=3.9) ..."
   conda create -n dfl python=3.9
+  echo "successfully create dfl env!!"
 else
   echo "dfl env exists"
 fi
 
-conda activate dfl
+echo "init dfl env .."
+$CONDA_EXE activate dfl
 echo "CONDA_DEFAULT_ENV=$CONDA_DEFAULT_ENV"
 
 if [ ! -n "$DFL_MAIN" ]; then
