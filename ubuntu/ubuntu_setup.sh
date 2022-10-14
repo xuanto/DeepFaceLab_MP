@@ -25,7 +25,7 @@ else
 fi
 
 echo "CONDA_DEFAULT_ENV=$CONDA_DEFAULT_ENV"
-tmpv=`conda info --envs | grep dfl`
+set tmpv=`conda info --envs | grep dfl`
 echo "tmpv=$tmpv"
 
 if [ ! -n "$tmpv" ]; then
