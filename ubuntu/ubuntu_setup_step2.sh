@@ -12,8 +12,6 @@ fi
 echo "$CONDA_PREFIX"
 conda info
 
-echo "DFL_MAIN=$DFL_MAIN"
-echo "WORKSPACE=$WORKSPACE"
 if [ ! -n "$DFL_MAIN" ]; then
   sudo conda env config vars set DFL_MAIN=".dfl/DeepFaceLab/main.py"
 else
@@ -27,12 +25,9 @@ else
 fi
 
 echo "upgrading pip ..."
-echo `which pip`
-echo `which python`
 python -m pip install --upgrade pip
 
-reqs_file='$(dirname $0)/requirements.txt'
-
+reqs_file="$(dirname $0)/requirements.txt"
 echo "Using $reqs_file for $(python -V)"
 
 pip --no-cache-dir install -r $reqs_file
