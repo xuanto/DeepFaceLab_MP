@@ -7,21 +7,10 @@ set -e
 mkdir -p .dfl
 mkdir -p workspace
 
-# init conda
-# echo "$('/home/ubuntu/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-# __conda_setup="$('/home/ubuntu/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-# echo "debug 1"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/home/ubuntu/anaconda3/etc/profile.d/conda.sh" ]; then
-#         . "/home/ubuntu/anaconda3/etc/profile.d/conda.sh"
-#     else
-#         echo "debug 2"
-#         export PATH="/home/ubuntu/anaconda3/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
+if [ ! -n "$CONDA_EXE" ]; then
+  echo "conda is not install! please install anaconda3!"
+  exit 1
+fi
 
 $CONDA_EXE info
 
