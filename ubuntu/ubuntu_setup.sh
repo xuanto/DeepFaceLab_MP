@@ -36,36 +36,6 @@ else
   echo "dfl env exists"
 fi
 
-echo "init dfl env .."
-$CONDA_EXE activate dfl
-echo "CONDA_DEFAULT_ENV=$CONDA_DEFAULT_ENV"
-
-if [ ! -n "$DFL_MAIN" ]; then
-  conda env config vars set DFL_MAIN=".dfl/DeepFaceLab/main.py"
-else
-  echo "DFL_MAIN=$DFL_MAIN"
-fi
-
-if [ ! -n "$WORKSPACE" ]; then
-  conda env config vars set WORKSPACE="workspace"
-else
-  echo "WORKSPACE=$WORKSPACE"
-fi
-
-echo "upgrading pip ..."
-python -m pip install --upgrade pip
-
-reqs_file="$(dirname $0)/requirements.txt"
-echo "Using $reqs_file for $(python -V)"
-
-pip --no-cache-dir install -r $reqs_file
-
-if [ ! -d workspace ]; then
-  mkdir -p workspace/data_src
-  mkdir -p workspace/data_dst
-  mkdir -p workspace/model
-fi
-
 echo "successfully install deepfacelab!"
 echo "please init dfl env by command 'conda activate dfl' "
-echo "good deepfacelabing ~"
+echo "then run step 2"

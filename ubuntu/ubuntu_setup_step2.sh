@@ -9,17 +9,22 @@ if [ ! -n "$CONDA_EXE" ]; then
   exit 1
 fi
 
-echo "$CONDA_PREFIX"
+echo "CONDA_DEFAULT_ENV=$CONDA_DEFAULT_ENV"
+if [ "$CONDA_DEFAULT_ENV" != "dfl" ]; then
+  echo "dfl env is not activated!"
+  exit 1
+fi
+
 conda info
 
 if [ ! -n "$DFL_MAIN" ]; then
-  sudo $CONDA_EXE env config vars set DFL_MAIN=".dfl/DeepFaceLab/main.py"
+  conda env config vars set DFL_MAIN=".dfl/DeepFaceLab/main.py"
 else
   echo "DFL_MAIN=$DFL_MAIN"
 fi
 
 if [ ! -n "$WORKSPACE" ]; then
-  sudo $CONDA_EXE env config vars set WORKSPACE="workspace"
+  conda env config vars set WORKSPACE="workspace"
 else
   echo "WORKSPACE=$WORKSPACE"
 fi
@@ -39,5 +44,4 @@ if [ ! -d workspace ]; then
 fi
 
 echo "successfully install deepfacelab!"
-echo "please init dfl env by command 'conda activate dfl' "
 echo "good deepfacelabing ~"
