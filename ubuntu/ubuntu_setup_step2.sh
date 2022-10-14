@@ -4,14 +4,28 @@ echo "$(dirname $0)"
 
 set -e
 
+if [ ! -n "$CONDA_EXE" ]; then
+  echo "conda is not install! please install anaconda3!"
+  exit 1
+fi
+
+conda info
+
 if [ -n "$DFL_MAIN" ]; then
   conda env config vars set DFL_MAIN=".dfl/DeepFaceLab/main.py"
+else
+  echo "DFL_MAIN=$DFL_MAIN"
 fi
+
 if [ -n "$WORKSPACE" ]; then
   conda env config vars set WORKSPACE="workspace"
+else
+  echo "WORKSPACE=$WORKSPACE"
 fi
 
 echo "upgrading pip ..."
+echo `which pip`
+echo `which python`
 python -m pip install --upgrade pip
 
 reqs_file='$(dirname $0)/requirements.txt'
