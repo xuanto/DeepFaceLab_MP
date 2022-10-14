@@ -13,13 +13,13 @@ echo "$CONDA_PREFIX"
 conda info
 
 if [ ! -n "$DFL_MAIN" ]; then
-  sudo conda env config vars set DFL_MAIN=".dfl/DeepFaceLab/main.py"
+  sudo $CONDA_EXE env config vars set DFL_MAIN=".dfl/DeepFaceLab/main.py"
 else
   echo "DFL_MAIN=$DFL_MAIN"
 fi
 
 if [ ! -n "$WORKSPACE" ]; then
-  sudo conda env config vars set WORKSPACE="workspace"
+  sudo $CONDA_EXE env config vars set WORKSPACE="workspace"
 else
   echo "WORKSPACE=$WORKSPACE"
 fi

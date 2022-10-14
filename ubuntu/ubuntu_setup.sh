@@ -37,13 +37,13 @@ conda activate dfl
 echo "CONDA_DEFAULT_ENV=$CONDA_DEFAULT_ENV"
 
 if [ ! -n "$DFL_MAIN" ]; then
-  sudo conda env config vars set DFL_MAIN=".dfl/DeepFaceLab/main.py"
+  conda env config vars set DFL_MAIN=".dfl/DeepFaceLab/main.py"
 else
   echo "DFL_MAIN=$DFL_MAIN"
 fi
 
 if [ ! -n "$WORKSPACE" ]; then
-  sudo conda env config vars set WORKSPACE="workspace"
+  conda env config vars set WORKSPACE="workspace"
 else
   echo "WORKSPACE=$WORKSPACE"
 fi
