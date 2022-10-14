@@ -36,6 +36,6 @@ else
   echo "dfl env exists"
 fi
 
-echo "successfully install deepfacelab!"
+echo "successfully install deepfacelab and dfl env!"
 echo "please init dfl env by command 'conda activate dfl' "
 echo "then run step 2"

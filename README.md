@@ -15,9 +15,21 @@ You'll need `git`, `ffmpeg` and `anaconda` available to execute these scripts. T
 
 ## ubuntu
 
-大部分ubuntu服务器默认使用dash，会导致脚本中的source命令无法使用。本项目采用conda进行环境管理，可以避免对source命令的依赖。
+大部分ubuntu服务器默认使用dash，会导致脚本中的source和conda等命令无法使用，因此安装过程需要拆分成两步。
 
-安装命令：`sudo sh ubuntu/ubuntu_setup.sh [anaconda安装路径]`
+安装命令：
+
+```
+# 下载deepfacelab并创建虚拟环境
+sh ubuntu/setup_ubuntu_step1.sh
+# 启动虚拟环境
+conda activate dfl
+# 完成最后的安装
+sh ubuntu/setup_ubuntu_step1.sh
+# 重启虚拟环境
+conda deactivate
+conda activate dfl
+```
 
 本项目在腾讯云服务器上进行部署，未测试其他平台服务器兼容情况。欢迎提CR~
 
