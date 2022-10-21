@@ -25,7 +25,7 @@ sh ubuntu/setup_ubuntu_step1.sh
 # 启动虚拟环境
 conda activate dfl
 # 完成最后的安装
-sh ubuntu/setup_ubuntu_step1.sh
+sh ubuntu/setup_ubuntu_step2.sh
 # 重启虚拟环境
 conda deactivate
 conda activate dfl
@@ -44,7 +44,7 @@ Attention! This project can not use GPU.
 
 ## Linux
 
-
+首先安装ffmpeg和anaconda
 
 
 ## Windows
