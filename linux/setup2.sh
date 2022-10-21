@@ -4,8 +4,6 @@ echo "$(dirname $0)"
 
 set -e
 
-source activate dfl
-
 echo "CONDA_DEFAULT_ENV=$CONDA_DEFAULT_ENV"
 if [ "$CONDA_DEFAULT_ENV" != "dfl" ]; then
   echo "dfl env is not activated!"
@@ -27,8 +25,6 @@ if [ ! -n "$WORKSPACE" ]; then
 else
   echo "WORKSPACE=$WORKSPACE"
 fi
-
-source activate dfl
 
 echo "upgrading pip ..."
 python -m pip install --upgrade pip
