@@ -2,13 +2,19 @@
 
 set -e
 
-# install python3-virtualenv
-sudo yum install python3-virtualenv
+# install anaconda
+wget https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh
+sh Anaconda3-2022.10-Linux-x86_64.sh
 
 # install ffmpeg
-# from article: https://blog.csdn.net/XIAOGUANG_/article/details/105343886
-sudo yum install epel-release -y
-sudo yum update -y
-sudo rpm --import http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro
-sudo rpm -Uvh http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm
-sudo yum -y install ffmpeg ffmpeg-devel
+# yum -y install ffmpeg ffmpeg-devel
+
+# from article https://blog.csdn.net/u013314786/article/details/89682800
+wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
+xz -d ffmpeg-release-amd64-static.tar.xz
+tar -xvf ffmpeg-release-amd64-static.tar.xz
+cd ffmpeg-release-amd64-static
+ln -s /data/software/ffmpeg-git-20190424-amd64-static/ffmpeg /usr/binffmpeg
+ln -s /data/software/ffmpeg-git-20190424-amd64-static/ffprobe /usr/binffprobe
+
+echo "successfully install ffmpeg ffprobe"
