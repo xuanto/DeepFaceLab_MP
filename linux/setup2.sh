@@ -34,11 +34,9 @@ echo "Using $reqs_file for $(python -V)"
 
 pip --no-cache-dir install -r $reqs_file
 
-if [ ! -d workspace ]; then
-  mkdir -p workspace/data_src
-  mkdir -p workspace/data_dst
-  mkdir -p workspace/model
-fi
+mkdir -p workspace/data_src
+mkdir -p workspace/data_dst
+mkdir -p workspace/model
 
 echo "successfully install deepfacelab!"
 echo "good deepfacelabing ~"
