@@ -4,7 +4,7 @@ echo "$(dirname $0)"
 
 set -e
 
-rm -rf .dfl
+# rm -rf .dfl
 rm -rf workspace
 
 conda deactivate
