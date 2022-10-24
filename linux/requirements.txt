@@ -7,7 +7,7 @@ ffmpeg-python==0.2.0
 scikit-image==0.18.3
 scipy==1.7.2
 colorama==0.4.4
-tensorflow-gpu==2.7.0
+tensorflow-gpu==2.3.0
 PyQt5==5.15.4
 Pillow==8.4.0
 tf2onnx
