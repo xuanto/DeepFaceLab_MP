@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Please make sure to run this script on anaconda base env !!
+
 cd "$(dirname $0)/.."
 echo "$(dirname $0)"
 
