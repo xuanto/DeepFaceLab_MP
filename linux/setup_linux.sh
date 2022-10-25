@@ -62,8 +62,6 @@ else
   echo "WORKSPACE=$WORKSPACE"
 fi
 
-source activate dfl
-
 echo "upgrading pip ..."
 python -m pip install --upgrade pip
 
