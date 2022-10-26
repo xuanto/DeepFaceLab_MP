@@ -66,7 +66,7 @@ echo "upgrading pip ..."
 python -m pip install --upgrade pip
 
 reqs_file="$(dirname $0)/requirements.txt"
-echo "Using $reqs_file for $(python -V)"
+echo "Using $reqs_file to install packages.."
 
 pip --no-cache-dir install -r $reqs_file
 
