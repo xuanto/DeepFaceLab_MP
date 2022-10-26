@@ -10,7 +10,8 @@ python "$DFL_MAIN" videoed extract-video \
 # STEP3: extract_images_from_video_data_dst
 python "$DFL_MAIN" videoed extract-video \
   --input-file "$WORKSPACE/data_dst.*" \
-  --output-dir "$WORKSPACE/data_dst"
+  --output-dir "$WORKSPACE/data_dst" \
+  --force-gpu-idxs 0
 
 # STEP4:
 #   1) data_src_extract_faces_S3FD

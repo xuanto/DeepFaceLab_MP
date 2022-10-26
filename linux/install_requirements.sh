@@ -6,8 +6,10 @@
 wget https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh
 sh Anaconda3-2022.10-Linux-x86_64.sh
 
-# install ffmpeg
+# install sz rz
+yum -y install lrzsz
 
+# install ffmpeg
 # Errors may occur
 yum -y install ffmpeg ffmpeg-devel
 
