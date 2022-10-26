@@ -2,7 +2,7 @@
 # Please make sure to run this script on anaconda base env !!
 
 cd "$(dirname $0)/.."
-echo "$(dirname $0)"
+echo "Running on $(dirname $0)"
 
 set -e
 
@@ -16,21 +16,22 @@ fi
 
 conda info
 
-echo "Running on $(dirname $0)"
+if [ "$CONDA_DEFAULT_ENV" != "base" ]; then
+  echo "base env is not activated! Please init base conda env!"
+  exit 1
+fi
 
-if [ ! -d .dfl/DeepFaceLab ]; then
-  echo "Cloning DeepFaceLab"
+if [ ! -e .dfl/DeepFaceLab/_success ]; then
+  echo "Cloning DeepFaceLab..."
+  rm -rf .dfl/DeepFaceLab
   git clone --no-single-branch --depth 1 "https://github.com/iperov/DeepFaceLab.git" .dfl/DeepFaceLab
+  touch .dfl/DeepFaceLab/_success
   echo "DeepFaceLab clone success!!"
 else
   echo "DeepFaceLab existed, skip cloning ..."
 fi
 
-echo "CONDA_DEFAULT_ENV=$CONDA_DEFAULT_ENV"
-tmpv=$(conda info --envs | grep dfl)
-echo "tmpv=$tmpv"
-
-if [ ! -n "$tmpv" ]; then
+if [ ! -n "$(conda info --envs | grep dfl)" ]; then
   echo "creating dfl env (using python verison=3.6) ..."
   conda create -n dfl python=3.6
   echo "successfully create dfl env!!"
@@ -40,7 +41,6 @@ fi
 
 source activate dfl
 
-echo "CONDA_DEFAULT_ENV=$CONDA_DEFAULT_ENV"
 if [ "$CONDA_DEFAULT_ENV" != "dfl" ]; then
   echo "dfl env is not activated!"
   exit 1
@@ -68,7 +68,7 @@ python -m pip install --upgrade pip
 reqs_file="$(dirname $0)/requirements.txt"
 echo "Using $reqs_file to install packages.."
 
-pip --no-cache-dir install -r $reqs_file
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r $reqs_file
 echo "successfully install all packages !!"
 
 if [ ! -d workspace ]; then
