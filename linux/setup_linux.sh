@@ -27,7 +27,7 @@ else
 fi
 
 echo "CONDA_DEFAULT_ENV=$CONDA_DEFAULT_ENV"
-set tmpv=`conda info --envs | grep dfl`
+tmpv=$(conda info --envs | grep dfl)
 echo "tmpv=$tmpv"
 
 if [ ! -n "$tmpv" ]; then
@@ -44,20 +44,20 @@ echo "CONDA_DEFAULT_ENV=$CONDA_DEFAULT_ENV"
 if [ "$CONDA_DEFAULT_ENV" != "dfl" ]; then
   echo "dfl env is not activated!"
   exit 1
+else
+  echo "======= dfl env ======="
 fi
-
-conda info
 
 if [ ! -n "$DFL_MAIN" ]; then
   conda env config vars set DFL_MAIN=".dfl/DeepFaceLab/main.py"
-  echo "set DFL_MAIN=.dfl/DeepFaceLab/main.py"
+  echo "successfully set DFL_MAIN=$DFL_MAIN"
 else
   echo "DFL_MAIN=$DFL_MAIN"
 fi
 
 if [ ! -n "$WORKSPACE" ]; then
   conda env config vars set WORKSPACE="workspace"
-  echo "set WORKSPACE=workspace"
+  echo "successfully set WORKSPACE=$WORKSPACE"
 else
   echo "WORKSPACE=$WORKSPACE"
 fi
@@ -69,6 +69,7 @@ reqs_file="$(dirname $0)/requirements.txt"
 echo "Using $reqs_file to install packages.."
 
 pip --no-cache-dir install -r $reqs_file
+echo "successfully install all packages !!"
 
 if [ ! -d workspace ]; then
   mkdir -p workspace/data_src
@@ -76,6 +77,5 @@ if [ ! -d workspace ]; then
   mkdir -p workspace/model
 fi
 
-echo "successfully install deepfacelab!"
+echo "all works done!!"
 echo "good deepfacelabing ~"
-

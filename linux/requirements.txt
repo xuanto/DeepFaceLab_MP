@@ -4,10 +4,10 @@ scikit-image==0.17.2
 ffmpeg-python==0.2.0
 opencv-contrib-python-headless==4.1.2.30
 numexpr==2.7.3
-h5py==3.1.0
 colorama==0.4.4
 PyQt5==5.15.4
 Pillow==8.4.0
+h5py
 scipy
 numpy
 tf2onnx
