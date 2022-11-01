@@ -34,6 +34,7 @@ fi
 if [ ! -n "$(conda info --envs | grep dfl)" ]; then
   echo "creating dfl env (using python verison=3.6) ..."
   conda create -n dfl python=3.6
+  conda create -y -n deepfacelab python=3.6.6 cudatoolkit=9.0 cudnn=7.3.1
   echo "successfully create dfl env!!"
 else
   echo "dfl env exists"
